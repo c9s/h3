@@ -5,7 +5,7 @@ The Fast HTTP header parser library.
 
 H3 does not use finite state machine or parser generator to parse the http request header, it goes through the whole buffer and save the pointers of each meta fields and values by a hand-written scanner.
 
-Since a HTTP-based application should be tolerant to the entity-header. H3 is designed to tolerant the header format, you can decide whether to validate the header fields by your will.
+Since a HTTP-based application should be tolerant to the entity-header. H3 is designed to tolerant the entity header, you can decide whether to validate the header field values by your will.
 
 All HTTP header fields are lazily parsed, H3 only parses the details when needed.
 
