@@ -13,4 +13,69 @@ All HTTP header fields are lazily parsed, H3 only parses the details when needed
 **(under construction)**
 
 
+High Level API
+----------------------
+
+```c
+h3_parse_request_header(RequestHeader *header, const char *header, int len);
+
+
+/*
+ * Request Header
+ * http://tools.ietf.org/html/rfc2616#section-5.3
+ */
+h3_request_header_get_accept(RequestHeader *header); // Get "Accept"
+h3_request_header_get_accept_charset(RequestHeader *header); // Get "Accept-Charset"
+h3_request_header_get_accept_language(RequestHeader *header); // Get "Accept-Language"
+h3_request_header_get_accept_encoding(RequestHeader *header); // Get "Accept-Encoding"
+h3_request_header_get_authorization(RequestHeader *header); // Get "Authorization"
+h3_request_header_get_expect(RequestHeader *header); // Get "Expect"
+h3_request_header_get_from(RequestHeader *header); // Get "From"
+h3_request_header_get_host(RequestHeader *header); // Get "Host"
+h3_request_header_get_if_match(RequestHeader *header); // Get "If-Match"
+
+
+/* 
+ * Response Header
+ * http://tools.ietf.org/html/rfc2616#section-6
+ */
+h3_request_header_get_accept_encoding(RequestHeader *header); // Get "Accept-Encoding"
+h3_request_header_get_transfer_encoding(RequestHeader *header); // Get "Transfer-Encoding"
+h3_request_header_get_cache_control(RequestHeader *header);  // Get "Cache-Control"
+h3_request_header_get_connection(RequestHeader *header);  // Get "Connection"
+h3_request_header_get_date(RequestHeader *header);        // Get "Date"
+h3_request_header_get_upgrade(RequestHeader *header);     // Get "Upgrade"
+h3_request_header_get_via(RequestHeader *header);         // Get "Via"
+h3_request_header_get_warning(RequestHeader *header);     // Get "Warning"
+h3_request_header_get_accept_language(RequestHeader *header); // Get "Accept-Language"
+h3_request_header_get_accept_ranges(RequestHeader *header); // Get "Accept-Ranges"
+```
+
+Low Level API
+---------------------
+
+
+#### Content-Coding
+
+```c
+ContentCoding h3_parse_date_rfc1123(const char *dateStr, int len);
+```
+
+#### Date/Time parsing
+
+```c
+H3DateTime * h3_parse_date_rfc1123(const char *dateStr, int len);
+
+H3DateTime * h3_parse_date_rfc1036(const char *dateStr, int len);
+
+H3DateTime * h3_parse_date_rfc850(const char *dateStr, int len); // rfc850 date format is replaced by rfc1036
+
+H3DateTime * h3_parse_date_ansi(const char *dateStr, int len);
+
+/*
+ * Detect & Parse date string automatically
+ */
+H3DateTime * h3_parse_date(, const char *dateStr, int len);
+```
+
 
