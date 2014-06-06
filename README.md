@@ -24,43 +24,43 @@ h3_parse_request_header(RequestHeader *header, const char *header, int len);
  * Request Header
  * http://tools.ietf.org/html/rfc2616#section-5.3
  */
-h3_get_accept(RequestHeader *header); // Get "Accept"
-h3_get_accept_charset(RequestHeader *header); // Get "Accept-Charset"
-h3_get_accept_language(RequestHeader *header); // Get "Accept-Language"
-h3_get_accept_encoding(RequestHeader *header); // Get "Accept-Encoding"
-h3_get_authorization(RequestHeader *header); // Get "Authorization"
-h3_get_expect(RequestHeader *header); // Get "Expect"
-h3_get_from(RequestHeader *header); // Get "From"
-h3_get_host(RequestHeader *header); // Get "Host"
-h3_get_if_match(RequestHeader *header); // Get "If-Match"
+Value * h3_request_get_accept(RequestHeader *header); // Get "Accept"
+Value * h3_request_get_accept_charset(RequestHeader *header); // Get "Accept-Charset"
+Value * h3_request_get_accept_language(RequestHeader *header); // Get "Accept-Language"
+Value * h3_request_get_accept_encoding(RequestHeader *header); // Get "Accept-Encoding"
+Value * h3_request_get_authorization(RequestHeader *header); // Get "Authorization"
+Value * h3_request_get_expect(RequestHeader *header); // Get "Expect"
+Value * h3_request_get_from(RequestHeader *header); // Get "From"
+Value * h3_request_get_host(RequestHeader *header); // Get "Host"
+Value * h3_request_get_if_match(RequestHeader *header); // Get "If-Match"
 
-h3_get_if_none_match(RequestHeader *header); // Get "If-None-Match"
-h3_get_if_range(RequestHeader *header); // Get "If-Range"
-h3_get_if_unmodified_since(RequestHeader *header); // Get "If-Unmodified-Since"
+Value * h3_request_get_if_none_match(RequestHeader *header); // Get "If-None-Match"
+Value * h3_request_get_if_range(RequestHeader *header); // Get "If-Range"
+Value * h3_request_get_if_unmodified_since(RequestHeader *header); // Get "If-Unmodified-Since"
 
-h3_get_range(RequestHeader *header); // Get "Range"
-h3_get_referer(RequestHeader *header); // Get "Referer"
-h3_get_max_forwards(RequestHeader *header); // Get "Max-Forwards"
-h3_get_proxy_authorization(RequestHeader *header); // Get "Proxy-Authorization"
-h3_get_range(RequestHeader *header); // Get "Range"
-h3_get_user_agent(RequestHeader *header); // Get "User-Agent"
-h3_get_te(RequestHeader *header); // Get "TE"
+Value * h3_request_get_range(RequestHeader *header); // Get "Range"
+Value * h3_request_get_referer(RequestHeader *header); // Get "Referer"
+Value * h3_request_get_max_forwards(RequestHeader *header); // Get "Max-Forwards"
+Value * h3_request_get_proxy_authorization(RequestHeader *header); // Get "Proxy-Authorization"
+Value * h3_request_get_range(RequestHeader *header); // Get "Range"
+Value * h3_request_get_user_agent(RequestHeader *header); // Get "User-Agent"
+Value * h3_request_get_te(RequestHeader *header); // Get "TE"
 
 
 /* 
  * Response Header
  * http://tools.ietf.org/html/rfc2616#section-6
  */
-h3_request_header_get_accept_encoding(ResponseHeader *header); // Get "Accept-Encoding"
-h3_request_header_get_accept_language(ResponseHeader *header); // Get "Accept-Language"
-h3_request_header_get_accept_ranges(ResponseHeader *header); // Get "Accept-Ranges"
-h3_request_header_get_cache_control(ResponseHeader *header);  // Get "Cache-Control"
-h3_request_header_get_connection(ResponseHeader *header);  // Get "Connection"
-h3_request_header_get_date(ResponseHeader *header);        // Get "Date"
-h3_request_header_get_transfer_encoding(ResponseHeader *header); // Get "Transfer-Encoding"
-h3_request_header_get_upgrade(ResponseHeader *header);     // Get "Upgrade"
-h3_request_header_get_via(ResponseHeader *header);         // Get "Via"
-h3_request_header_get_warning(ResponseHeader *header);     // Get "Warning"
+Value * h3_response_get_accept_encoding(ResponseHeader *header); // Get "Accept-Encoding"
+Value * h3_response_get_accept_language(ResponseHeader *header); // Get "Accept-Language"
+Value * h3_response_get_accept_ranges(ResponseHeader *header); // Get "Accept-Ranges"
+Value * h3_response_get_cache_control(ResponseHeader *header);  // Get "Cache-Control"
+Value * h3_response_get_connection(ResponseHeader *header);  // Get "Connection"
+Value * h3_response_get_date(ResponseHeader *header);        // Get "Date"
+Value * h3_response_get_transfer_encoding(ResponseHeader *header); // Get "Transfer-Encoding"
+Value * h3_response_get_upgrade(ResponseHeader *header);     // Get "Upgrade"
+Value * h3_response_get_via(ResponseHeader *header);         // Get "Via"
+Value * h3_response_get_warning(ResponseHeader *header);     // Get "Warning"
 ```
 
 Low Level API
