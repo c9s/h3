@@ -13,8 +13,10 @@ All HTTP header fields are lazily parsed, H3 only parses the details when needed
 **(under construction)**
 
 
-High Level API
-----------------------
+API
+-----
+
+### High Level API
 
 ```c
 h3_parse_request_header(RequestHeader *header, const char *header, int len);
@@ -63,8 +65,7 @@ Value * h3_response_get_via(ResponseHeader *header);         // Get "Via"
 Value * h3_response_get_warning(ResponseHeader *header);     // Get "Warning"
 ```
 
-Low Level API
----------------------
+### Low Level API
 
 
 #### Content-Coding
