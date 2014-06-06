@@ -22,7 +22,7 @@
 void test_header(const char *body, int len) {
     RequestHeader *header;
     header = h3_request_header_new();
-    h3_parse_request_header(header, body, len);
+    h3_request_header_parse(header, body, len);
 
 
     printf("HEADER\n");
@@ -59,7 +59,7 @@ int main() {
     RequestHeader *header;
 
     header = h3_request_header_new();
-    h3_parse_request_header(header, buf, s);
+    h3_request_header_parse(header, buf, s);
     h3_request_header_free(header);
 
 
@@ -79,7 +79,7 @@ int main() {
         ;
 
     header = h3_request_header_new();
-    h3_parse_request_header( header, SL(headerbody1));
+    h3_request_header_parse( header, SL(headerbody1));
     h3_request_header_free(header);
 
     /*

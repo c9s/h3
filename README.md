@@ -19,7 +19,7 @@ API
 ### High Level API
 
 ```c
-h3_parse_request_header(RequestHeader *header, const char *header, int len);
+h3_request_header_parse(RequestHeader *header, const char *header, int len);
 
 
 /*

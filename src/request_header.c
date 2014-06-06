@@ -28,7 +28,7 @@ void h3_request_header_free(RequestHeader *header) {
 }
 
 
-int h3_parse_request_header(RequestHeader *header, const char *body, int bodyLength) {
+int h3_request_header_parse(RequestHeader *header, const char *body, int bodyLength) {
     // Parse the request-line
     // http://tools.ietf.org/html/rfc2616#section-5.1
     // Request-Line   = Method SP Request-URI SP HTTP-Version CRLF
