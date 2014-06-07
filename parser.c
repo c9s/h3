@@ -19,15 +19,15 @@
 #define SS(constStr) constStr, sizeof(constStr)-1
 #define SL(constStr) constStr, strlen(constStr)
 
-void test_header(const char *body, int len) {
+void test_header(const char *headerBody, int len) {
     RequestHeader *header;
     header = h3_request_header_new();
-    h3_request_header_parse(header, body, len);
+    h3_request_header_parse(header, headerBody, len);
 
 
     printf("HEADER\n");
     printf("===========================\n");
-    printf("%s", body);
+    printf("%s", headerBody);
     printf("\n---------------------------\n");
     printf("Method: %.*s\n", header->RequestMethodLen, header->RequestMethod);
     printf("Request-URI: %.*s\n", header->RequestURILen, header->RequestURI);
