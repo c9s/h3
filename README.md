@@ -3,11 +3,22 @@ H3
 
 The Fast HTTP header parser library.
 
-H3 does not use finite state machine or parser generator to parse the http request header, it goes through the whole buffer and save the pointers of each meta fields and values by a hand-written scanner.
+H3 does not use finite state machine or parser generator to parse the http
+request header, it goes through the whole buffer and save the pointers of each
+meta fields and values by a hand-written scanner.
 
-Since a HTTP-based application should be tolerant to the entity-header. H3 is designed to tolerant the entity header, you can decide whether to validate the header field values by your will.
+H3 uses a pre-built minimal perfect hash table for the defined names of the header fields, which is 
+to provide a fast field lookup. 
 
-All HTTP header fields are lazily parsed, H3 only parses the details when needed.
+For these custom/external header fields (field name starts with X- or other),
+H3 lookups these fields by a simple/quick hashing function.
+
+Since a HTTP-based application should be tolerant to the entity-header. H3 is
+designed to tolerant the entity header, you can decide whether to validate the
+header field values by your will.
+
+All HTTP header fields are lazily parsed, H3 only parses the details when
+needed.
 
 
 **(under construction)**
@@ -93,12 +104,6 @@ Value * h3_response_header_warning(ResponseHeader *header);     // Get "Warning"
 ### Low Level API
 
 
-#### Content-Coding
-
-```c
-ContentCoding h3_parse_date_rfc1123(const char *dateStr, int len);
-```
-
 #### Date/Time parsing
 
 ```c
@@ -115,5 +120,6 @@ H3DateTime * h3_parse_date_ansi(const char *dateStr, int len);
  */
 H3DateTime * h3_parse_date(, const char *dateStr, int len);
 ```
+
 
 
