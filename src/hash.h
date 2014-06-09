@@ -1,5 +1,5 @@
-#ifndef  __ESERV_HASH_H__
-#define  __ESERV_HASH_H__
+#ifndef  _H3_HASH_H__
+#define  _H3_HASH_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -11,23 +11,23 @@ typedef struct _slist {
 	void *key;
 	void *value;
 	struct _slist *next;
-} ex_hashlist;
+} hh_hashlist;
 
 typedef struct {
-	ex_hashlist **buckets;
+	hh_hashlist **buckets;
 	size_t size;
-	ex_mpool *mpool;
+	h3_mpool *mpool;
 	int (*hashfun)(const void *key);
 	int (*hashcmp)(const void *lkey, const void *rkey);
-} ex_hashmap;
+} hh_hashmap;
 
-void ex_hash_init(ex_hashmap* hm, ex_mpool *mp , size_t _size);
-void ex_hash_clear(ex_hashmap *hm);
+void hh_init(hh_hashmap* hm, h3_mpool *mp , size_t _size);
+void hh_clear(hh_hashmap *hm);
 
-int ex_hash_add(ex_hashmap *hm, const void *key, const void *value);
-void* ex_hash_find(const ex_hashmap *hm, const void *key);
+int hh_add(hh_hashmap *hm, const void *key, const void *value);
+void* hh_find(const hh_hashmap *hm, const void *key);
 
-int ex_hashfun_str(const char *s);
+int hh_hashfun_str(const char *s);
 
 #ifdef __cplusplus
 }

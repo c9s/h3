@@ -15,7 +15,7 @@ LDFLAGS = -lpthread
 %.o: %.c $(DEPS)
 	$(CC) -static -fpic -c -o $@ $< $(CFLAGS)
 
-OBJ = parser.o src/header_field.o src/header_field_list.o src/request_header.o
+OBJ = parser.o src/header_field.o src/header_field_list.o src/request_header.o src/hash.o src/mempool.o
 
 libh3: $(OBJ)
 	gcc -shared -o libh3.a $^ $(CFLAGS)
