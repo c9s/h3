@@ -7,8 +7,8 @@ H3 does not use finite state machine or parser generator to parse the http
 request header, it goes through the whole buffer and save the pointers of each
 meta fields and values by a hand-written scanner.
 
-H3 uses a pre-built minimal perfect hash table for the defined names of the header fields, which is 
-to provide a fast field lookup. 
+H3 uses a pre-built minimal perfect hash table for the defined names of the
+header fields, to provide a fast field name lookup. 
 
 For these custom/external header fields (field name starts with X- or other),
 H3 lookups these fields by a simple/quick hashing function.

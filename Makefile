@@ -1,4 +1,3 @@
-
 # CC = gcc
 # ifeq ($(shell uname),linux)
 # SOURCE_FLAGS = -D_POSIX_SOURCE -D_BSD_SOURCE
@@ -9,7 +8,7 @@
 #	 -std=gnu99
 # -D NDEBUG
 
-CFLAGS += -Iinclude -Isrc -Wall
+CFLAGS += -std=c99 -Iinclude -Isrc -Wall -ggdb -O2
 LDFLAGS = -lpthread
 
 %.o: %.c $(DEPS)
