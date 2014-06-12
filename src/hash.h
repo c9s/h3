@@ -5,7 +5,6 @@
 extern "C" {
 #endif
 #include "mempool.h"
-#include <strings.h>
 
 typedef struct _slist {
 	void *key;

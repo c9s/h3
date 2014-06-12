@@ -7,7 +7,7 @@
 
 #include "scanner.h"
 
-inline bool peekstr(const char *buf, const char* str, int len ) {
+bool peekstr(const char *buf, const char* str, int len ) {
     int i = 0;
     buf++;
     for (i=0; i < len; i++ ) {
