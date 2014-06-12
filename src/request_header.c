@@ -86,13 +86,13 @@ int h3_request_header_parse(RequestHeader *header, const char *body, int bodyLen
         p++; // skip ':'
 
         // CRLF is not allowed here
-        if (iscrlf(p)) return -1;
+		if (end(p) || iscrlf(p)) return -1;
 
 
         while(notend(p) && isspace(*p)) p++; // skip space
 
         // CRLF is not allowed here
-        if (iscrlf(p)) return -1;
+        if (end(p) || iscrlf(p)) return -1;
 
         field->Value = p;
         while(notend(p) && notcrlf(p) ) p++;

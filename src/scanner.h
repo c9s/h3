@@ -35,10 +35,10 @@
 #define iscrlf(p) (*p == '\r' && *(p + 1) == '\n')
 #define notcrlf(p) (*p != '\r' && *(p + 1) != '\n')
 
-#define notend(p) *p != '\0'
-#define end(p) *p == '\0'
+#define notend(p) (*p != '\0')
+#define end(p) (*p == '\0')
 
 
-inline bool peekstr(const char *buf, const char* str, int len );
+bool peekstr(const char *buf, const char* str, int len );
 
 #endif /* !SCANNER_H */
