@@ -2,16 +2,40 @@
 #include <check.h>
 #include <stdlib.h>
 
-START_TEST (request_header_test)
-{
+#include "h3.h"
+// #include "scanner.h"
 
+#define SS(constStr) constStr, sizeof(constStr)-1
+#define SL(constStr) constStr, strlen(constStr)
+
+#define ok(v) ck_assert(v != NULL)
+
+START_TEST (request_header_new_test)
+{
+    char *headerbody = "GET /method HTTP/1.1\r\n"
+        "Host: github.com\r\n"
+        "Connection: keep-alive\r\n"
+        "Content-Length: 12611\r\n"
+        "Cache-Control: no-cache\r\n"
+        "\r\n"
+        ;
+
+
+    RequestHeader *h;
+    h = h3_request_header_new();
+
+    ok(h);
+
+    h3_request_header_parse(h, SL(headerbody));
+
+    h3_request_header_free(h);
 }
 END_TEST
 
 Suite* h3_suite (void) {
     Suite *suite = suite_create("h3 core test");
     TCase *tcase = tcase_create("parser tests");
-    tcase_add_test(tcase, request_header_test);
+    tcase_add_test(tcase, request_header_new_test);
     suite_add_tcase(suite, tcase);
     return suite;
 }
