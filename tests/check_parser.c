@@ -10,14 +10,15 @@
 
 #define ok(v) ck_assert(v != NULL)
 
+
 START_TEST (request_header_new_test)
 {
-    char *headerbody = "GET /method HTTP/1.1\r\n"
-        "Host: github.com\r\n"
-        "Connection: keep-alive\r\n"
-        "Content-Length: 12611\r\n"
-        "Cache-Control: no-cache\r\n"
-        "\r\n"
+    char *headerbody = "GET /method HTTP/1.1" CRLF
+        "Host: github.com" CRLF
+        "Connection: keep-alive" CRLF
+        "Content-Length: 12611" CRLF
+        "Cache-Control: no-cache" CRLF
+        CRLF
         ;
 
 

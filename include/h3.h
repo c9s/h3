@@ -12,6 +12,9 @@
 #include <ctype.h>
 #include <string.h>
 
+// CRLF string for readibility
+#define CRLF "\r\n"
+
 
 typedef struct _HeaderFields HeaderFields;
 typedef struct _HeaderField HeaderField;
