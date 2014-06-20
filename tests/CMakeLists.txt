@@ -1,5 +1,6 @@
 # cmakefile for check testing
 # followed from http://isti.bitbucket.org/2012/06/01/cmake-check.html
+#               http://johnlamp.net/cmake-tutorial-4-libraries-and-subdirectories.html
 
 enable_testing()
 find_package(Check REQUIRED)
