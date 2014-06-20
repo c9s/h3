@@ -8,13 +8,6 @@ START_TEST (request_header_test)
 }
 END_TEST
 
-START_TEST (test_gvc_render_file)
-{
-
-}
-END_TEST
-
-
 Suite* h3_suite (void) {
     Suite *suite = suite_create("h3 core test");
     TCase *tcase = tcase_create("parser tests");
