@@ -11,6 +11,8 @@ else (NOT CHECK_FOUND)
     add_executable(test_h3 check_parser.c)
     target_link_libraries(test_h3 ${TEST_LIBS})
 
+    add_test(test_h3 ${CMAKE_CURRENT_BINARY_DIR}/test_h3)
+
     add_custom_command(
         TARGET test_h3 POST_BUILD
         COMMENT "Running unit tests"
