@@ -8,9 +8,8 @@ if(CMAKE_COMPILER_IS_GNUCC)
   SET(TARGET_COMPILE_FLAGS "-std=gnu++11") # Add C++11 support for GCC
 endif()
 
-include_directories(. ${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/3rdparty /opt/local/include)
-link_directories(${LINK_DIRECTORIES} . ${PROJECT_SOURCE_DIR}/src /opt/local/lib)
-# include_directories(. ${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/3rdparty ${PROJECT_SOURCE_DIR})
+include_directories(. ${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/3rdparty /opt/local/include /usr/include)
+link_directories(${LINK_DIRECTORIES} ${PROJECT_SOURCE_DIR}/src /opt/local/lib)
 enable_testing()
-# add_subdirectory(src)
+add_subdirectory(src)
 add_subdirectory(tests)

@@ -4,7 +4,7 @@
  *
  * Distributed under terms of the MIT license.
  */
-
+#include <stdbool.h>
 #include "scanner.h"
 
 bool peekstr(const char *buf, const char* str, int len ) {
