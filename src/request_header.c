@@ -24,6 +24,11 @@ void h3_request_header_free(RequestHeader *header) {
 }
 
 
+/**
+ * This function returns a char pointer, which is the end of the request line.
+ *
+ * Return NULL if parse failed.
+ */
 const char * h3_request_line_parse(RequestHeader *header, const char *body, int bodyLength) {
     // Parse the request-line
     // http://tools.ietf.org/html/rfc2616#section-5.1
@@ -64,6 +69,9 @@ const char * h3_request_line_parse(RequestHeader *header, const char *body, int 
 
 
 
+/**
+ * Parse header body
+ */
 int h3_request_header_parse(RequestHeader *header, const char *body, int bodyLength) {
     const char *p = h3_request_line_parse(header, body, bodyLength);
 
