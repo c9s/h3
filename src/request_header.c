@@ -16,14 +16,10 @@
 
 RequestHeader* h3_request_header_new() {
     RequestHeader *h = malloc(sizeof(RequestHeader));
-    h->Fields = h3_header_field_list_new(12);
     return h;
 }
 
 void h3_request_header_free(RequestHeader *header) {
-    if (header->Fields) {
-        h3_header_field_list_free(header->Fields);
-    }
     free(header);
 }
 
@@ -76,9 +72,13 @@ int h3_request_header_parse(RequestHeader *header, const char *body, int bodyLen
     if (end(p)) return 0;
 
 
+
+    header->HeaderSize = 0;
+
     // Parse Header Fields Here
     do {
-        HeaderField *field  = h3_header_field_new();
+        HeaderField *field = & header->Fields[ header->HeaderSize++ ];
+        // HeaderField *field = h3_header_field_new();
         field->FieldName = p; // start of a header field name
 
         while(notend(p) && *p != ':' ) p++;

@@ -15,9 +15,26 @@
 // CRLF string for readibility
 #define CRLF "\r\n"
 
+#define MAX_HEADER_SIZE 20
 
-typedef struct _HeaderFields HeaderFields;
 typedef struct _HeaderField HeaderField;
+typedef struct _HeaderFields HeaderFields;
+
+/*
+    Host: github.com
+    ^     ^
+    |     |
+    |     Value (ValueLen = 10)
+    |
+    | FieldName, FieldNameLen = 4
+*/
+struct _HeaderField {
+    const char *FieldName;
+    int         FieldNameLen;
+
+    const char *Value;
+    int  ValueLen;
+};
 
 typedef struct  {
     /**
@@ -43,28 +60,13 @@ typedef struct  {
     const char * HTTPVersion;
     int HTTPVersionLen;
 
-    HeaderFields * Fields;
+    unsigned int HeaderSize;
+    HeaderField Fields[MAX_HEADER_SIZE];
 
-    // Fields *fields;
 } RequestHeader;
 
 
 
-/*
-    Host: github.com
-    ^     ^
-    |     |
-    |     Value (ValueLen = 10)
-    |
-    | FieldName, FieldNameLen = 4
-*/
-struct _HeaderField {
-    const char *FieldName;
-    int         FieldNameLen;
-
-    const char *Value;
-    int  ValueLen;
-};
 
 struct _HeaderFields {
     HeaderField ** Fields;
