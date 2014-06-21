@@ -18,7 +18,7 @@
 #define MAX_HEADER_SIZE 20
 
 typedef struct _HeaderField HeaderField;
-typedef struct _HeaderFields HeaderFields;
+typedef struct _HeaderFieldList HeaderFieldList;
 
 /*
     Host: github.com
@@ -65,10 +65,7 @@ typedef struct  {
 
 } RequestHeader;
 
-
-
-
-struct _HeaderFields {
+struct _HeaderFieldList {
     HeaderField ** Fields;
     int cap;
     int len;
@@ -87,11 +84,11 @@ int h3_request_header_parse(RequestHeader *header, const char *body, int bodyLen
 /**
  * Request Header Field List function prorotypes
  */
-HeaderFields * h3_header_field_list_new(int cap);
+HeaderFieldList * h3_header_field_list_new(int cap);
 
-void h3_header_field_list_resize(HeaderFields *fields, int newcap);
+void h3_header_field_list_resize(HeaderFieldList *fields, int newcap);
 
-void h3_header_field_list_append(HeaderFields *fields, HeaderField *field);
+void h3_header_field_list_append(HeaderFieldList *fields, HeaderField *field);
 
 #define h3_header_field_list_get(fields, idx) fields->Fields[idx]
 
@@ -99,7 +96,7 @@ void h3_header_field_list_append(HeaderFields *fields, HeaderField *field);
 
 #define h3_header_field_list_cap(fields) fields->cap
 
-void h3_header_field_list_free(HeaderFields *fields);
+void h3_header_field_list_free(HeaderFieldList *fields);
 
 
 

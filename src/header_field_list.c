@@ -8,8 +8,8 @@
 #include "h3.h"
 
 
-HeaderFields * h3_header_field_list_new(int cap) {
-    HeaderFields *fields = malloc(sizeof(HeaderFields));
+HeaderFieldList * h3_header_field_list_new(int cap) {
+    HeaderFieldList *fields = malloc(sizeof(HeaderFieldList));
     fields->cap = cap;
     fields->len = 0;
     fields->Fields = NULL;
@@ -20,13 +20,13 @@ HeaderFields * h3_header_field_list_new(int cap) {
     return fields;
 }
 
-void h3_header_field_list_resize(HeaderFields *fields, int newcap) {
+void h3_header_field_list_resize(HeaderFieldList *fields, int newcap) {
     fields->cap = newcap;
     fields->Fields = realloc(fields->Fields, sizeof(HeaderField) * newcap);
 }
 
 
-void h3_header_field_list_append(HeaderFields *fields, HeaderField *field) {
+void h3_header_field_list_append(HeaderFieldList *fields, HeaderField *field) {
     if (fields->len + 1 > fields->cap) {
         h3_header_field_list_resize(fields, fields->cap * 2);
     }
@@ -40,7 +40,7 @@ void h3_header_field_list_append(HeaderFields *fields, HeaderField *field) {
 
 #define h3_header_field_list_cap(fields) fields->cap
 
-void h3_header_field_list_free(HeaderFields *fields) {
+void h3_header_field_list_free(HeaderFieldList *fields) {
     if (fields->Fields) {
         free(fields->Fields);
     }
