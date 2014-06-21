@@ -12,8 +12,8 @@ else (NOT CHECK_FOUND)
 
     include_directories(. ${CHECK_INCLUDE_DIRS} ${PROJECT_SOURCE_DIR}/include)
 
-    add_executable(bench bench.c)
-    target_link_libraries(bench ${LIBS})
+    add_executable(bench_h3 bench_h3.c bench/bench.c)
+    target_link_libraries(bench_h3 ${LIBS})
 
     # include_directories("${PROJECT_SOURCE_DIR}/include/r2")
     add_executable(test_h3 check_parser.c)

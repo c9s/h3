@@ -1,0 +1,3 @@
+[submodule "tests/bench"]
+	path = tests/bench
+	url = git@github.com:c9s/bench.git
