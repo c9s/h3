@@ -17,8 +17,9 @@
 #define MAX_HEADER_SIZE 20
 
 enum H3_ERROR { 
-    H3_ERR_INCOMPLETE_HEADER = -1,
-    H3_ERR_UNEXPECTED_CHAR   = -2
+    H3_ERR_REQUEST_LINE_PARSE_FAIL = -1,
+    H3_ERR_INCOMPLETE_HEADER,
+    H3_ERR_UNEXPECTED_CHAR,
 };
 
 typedef struct _HeaderField HeaderField;
@@ -74,6 +75,8 @@ struct _HeaderFieldList {
     int cap;
     int len;
 };
+
+const char * h3_request_line_parse(RequestHeader *header, const char *body, int bodyLength);
 
 
 /**

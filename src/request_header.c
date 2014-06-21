@@ -24,26 +24,22 @@ void h3_request_header_free(RequestHeader *header) {
 }
 
 
-int h3_request_header_parse(RequestHeader *header, const char *body, int bodyLength) {
+const char * h3_request_line_parse(RequestHeader *header, const char *body, int bodyLength) {
     // Parse the request-line
     // http://tools.ietf.org/html/rfc2616#section-5.1
     // Request-Line   = Method SP Request-URI SP HTTP-Version CRLF
     const char * p = body;
-
     header->RequestLineStart = body;
-
 
     while (notend(p) && ! isspace(*p) ) p++;
 
     if ( end(p) || iscrlf(p) ) {
         // set error
-        return -1;
+        return NULL;
     }
 
     header->RequestMethod = body;
     header->RequestMethodLen = p - body;
-
-
 
     // Skip space
     // parse RequestURI
@@ -62,6 +58,17 @@ int h3_request_header_parse(RequestHeader *header, const char *body, int bodyLen
         header->HTTPVersion = p; 
         while (!isspace(*p) && notcrlf(p) ) p++;
         header->HTTPVersionLen = p - header->HTTPVersion;
+    }
+    return p;
+}
+
+
+
+int h3_request_header_parse(RequestHeader *header, const char *body, int bodyLength) {
+    const char *p = h3_request_line_parse(header, body, bodyLength);
+
+    if (p == NULL) {
+        return H3_ERR_REQUEST_LINE_PARSE_FAIL;
     }
 
     // should be ended with CR-LF
