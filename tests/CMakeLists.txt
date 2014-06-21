@@ -10,7 +10,11 @@ if (NOT CHECK_FOUND)
 else (NOT CHECK_FOUND)
     set(LIBS ${LIBS} ${CHECK_LIBRARIES} libh3)
 
-    include_directories(${CHECK_INCLUDE_DIRS})
+    include_directories(. ${CHECK_INCLUDE_DIRS} ${PROJECT_SOURCE_DIR}/include)
+
+    add_executable(bench bench.c)
+    target_link_libraries(bench ${LIBS})
+
     # include_directories("${PROJECT_SOURCE_DIR}/include/r2")
     add_executable(test_h3 check_parser.c)
     target_link_libraries(test_h3 ${LIBS})
