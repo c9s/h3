@@ -14,8 +14,12 @@
 
 // CRLF string for readibility
 #define CRLF "\r\n"
-
 #define MAX_HEADER_SIZE 20
+
+enum H3_ERROR { 
+    H3_ERR_INCOMPLETE_HEADER = -1,
+    H3_ERR_UNEXPECTED_CHAR   = -2
+};
 
 typedef struct _HeaderField HeaderField;
 typedef struct _HeaderFieldList HeaderFieldList;
