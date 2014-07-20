@@ -45,6 +45,7 @@ int main() {
     printf("===========================\n");
 
     h3_request_header_free(header);
+    return 0;
 }
 ```
 
