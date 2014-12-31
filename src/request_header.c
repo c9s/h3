@@ -114,9 +114,9 @@ int h3_request_header_parse(RequestHeader *header, const char *body, int bodyLen
         field->ValueLen = p - field->Value;
 
         iscrlf(p); p+=2;
-
+#ifdef DEBUG
         printf("==> %.*s ==> %.*s\n", field->FieldNameLen, field->FieldName, field->ValueLen, field->Value );
-
+#endif
         // end of header
         if (iscrlf(p)) return 0;
     } while( notend(p) );

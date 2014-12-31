@@ -1,0 +1,7 @@
+*.o
+libh3.a
+libh3.so
+test
+CMakeFiles/*
+CMakeCache.txt
+
