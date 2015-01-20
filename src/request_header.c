@@ -16,6 +16,16 @@
 
 RequestHeader* h3_request_header_new() {
     RequestHeader *h = malloc(sizeof(RequestHeader));
+    h->RequestLineStart = NULL;
+    h->RequestLineEnd = NULL;
+    h->RequestMethod = NULL;
+    h->RequestMethodLen = 0;
+    h->RequestURI = NULL;
+    h->RequestURILen = 0;
+    h->HTTPVersion = NULL;;
+    h->HTTPVersionLen = 0;
+    h->HeaderSize = 0;
+    memset( &h->Fields[0], 0, sizeof( h->Fields ) );
     return h;
 }
 
